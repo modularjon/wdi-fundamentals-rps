@@ -7,16 +7,18 @@ function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
+
 function randomPlay() {
     var randomNumber = Math.random();
     if (randomNumber < 0.33) {
-        return "rock";
+        return 'rock';
     } else if (randomNumber < 0.66) {
-        return "paper";
+        return 'paper';
     } else {
-        return "scissors";
+        return 'scissors';
     }
 }
+
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
@@ -32,8 +34,8 @@ function getComputerMove(move) {
 function getWinner(playerMove,computerMove) {
     var winner;
     if (playerMove === computerMove) {
-        winner = "tie";
-    } else if ((playerMove === "rock" && computerMove === "scissors") || (playerMove === "scissors" && computerMove === "paper") || (playerMove === "paper" && computerMove === "rock")) {
+        winner = 'tie';
+    } else if ((playerMove === 'rock' && computerMove === 'scissors') || (playerMove === 'scissors' && computerMove === 'paper') || (playerMove === 'paper' && computerMove === 'rock')) {
         winner = 'player';
     } else {
         winner = 'computer';
@@ -46,23 +48,21 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     while (playerWins < 5 && computerWins < 5) {
-        var playerMove = getPlayerMove();
-        var computerMove = getComputerMove();
-        var winner = getWinner(playerMove,computerMove);
+        playerMove = getPlayerMove();
+        computerMove = getComputerMove();
+        winner = getWinner(playerMove,computerMove);
         var result;
-        var resultDialogue = "You " + result + " You played " + playerMove + " against the opponent's " + computerMove + ". The score is " + playerWins + " wins for you and " + computerWins + " wins for you opponent.";
         if (winner === 'player') {
             result = "won!";
             playerWins ++;
-            console.log(resultDialogue);
+            console.log("You " + result + " You played " + playerMove + " against the opponent's " + computerMove + ". The score is " + playerWins + " wins for you and " + computerWins + " wins for your opponent.");
         } else if (winner === 'computer') {
             result = "lost.";
             computerWins ++;
-            console.log(resultDialogue);
+            console.log("You " + result + " You played " + playerMove + " against the opponent's " + computerMove + ". The score is " + playerWins + " wins for you and " + computerWins + " wins for your opponent.");
         } else {
             result = "drew.";
-            console.log(resultDialogue);
+            console.log("You " + result + " You played " + playerMove + " against the opponent's " + computerMove + ". The score is " + playerWins + " wins for you and " + computerWins + " wins for your opponent.");
         }
     }
-    return [playerWins, computerWins];
 }
